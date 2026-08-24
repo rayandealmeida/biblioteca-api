@@ -3,6 +3,7 @@ package com.rayan.bibliotecaapi.controller;
 import com.rayan.bibliotecaapi.business.LivroService;
 import com.rayan.bibliotecaapi.business.dto.LivroRequestDTO;
 import com.rayan.bibliotecaapi.business.dto.LivroResponseDTO;
+import com.rayan.bibliotecaapi.business.enums.StatusLivroEnum;
 import com.rayan.bibliotecaapi.infrastructure.entity.LivroEntity;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -51,5 +52,10 @@ public class LivroController {
     @PatchMapping("/livro/{id}/devolver")
     public ResponseEntity<LivroResponseDTO> devolverLivro(@PathVariable Long id){
         return ResponseEntity.ok(livroService.devolverLivro(id));
+    }
+
+    @GetMapping(value = "/livros", params = "status")
+    public ResponseEntity<List<LivroResponseDTO>> buscarStatus(@RequestParam StatusLivroEnum status){
+        return ResponseEntity.ok(livroService.buscarLivrosPorStatus(status));
     }
 }

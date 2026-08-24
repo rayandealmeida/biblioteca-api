@@ -86,4 +86,17 @@ public class LivroService {
         LivroEntity livroAtualizado = livroRepository.save(entity);
         return LivroMapper.paraLivroDTO(livroAtualizado);
     }
+
+    public List<LivroResponseDTO> buscarLivrosPorStatus(StatusLivroEnum statusLivroEnum){
+        List<LivroEntity> livros  = livroRepository.findAllByStatus(statusLivroEnum);
+        List<LivroResponseDTO> dtos = new ArrayList<>();
+
+        for(int i=0;i<livros .size();i++){
+            LivroEntity livroEntity = livros.get(i);
+            LivroResponseDTO livroDTO = LivroMapper.paraLivroDTO(livroEntity);
+            dtos.add(livroDTO);
+        }
+        return dtos;
+
+    }
 }
