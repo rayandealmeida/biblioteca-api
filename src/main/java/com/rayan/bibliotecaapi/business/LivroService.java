@@ -88,15 +88,15 @@ public class LivroService {
     }
 
     public List<LivroResponseDTO> buscarLivrosPorStatus(StatusLivroEnum statusLivroEnum){
-        List<LivroEntity> entity = livroRepository.findAllByStatus(statusLivroEnum);
-        List<LivroResponseDTO> dto = new ArrayList<>();
+        List<LivroEntity> livros  = livroRepository.findAllByStatus(statusLivroEnum);
+        List<LivroResponseDTO> dtos = new ArrayList<>();
 
-        for(int i=0;i<entity.size();i++){
-            LivroEntity livrosEntity = entity.get(i);
-            LivroResponseDTO livrosDTO = LivroMapper.paraLivroDTO(livrosEntity);
-            dto.add(livrosDTO);
+        for(int i=0;i<livros .size();i++){
+            LivroEntity livroEntity = livros.get(i);
+            LivroResponseDTO livroDTO = LivroMapper.paraLivroDTO(livroEntity);
+            dtos.add(livroDTO);
         }
-        return dto;
+        return dtos;
 
     }
 }

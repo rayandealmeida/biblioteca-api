@@ -1,6 +1,5 @@
 package com.rayan.bibliotecaapi.infrastructure.repository;
 
-import com.rayan.bibliotecaapi.business.dto.LivroResponseDTO;
 import com.rayan.bibliotecaapi.business.enums.StatusLivroEnum;
 import com.rayan.bibliotecaapi.infrastructure.entity.LivroEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
